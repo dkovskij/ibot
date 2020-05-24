@@ -9,14 +9,48 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    meta: {
+      breadCrumbs: [
+        {
+          href: '/',
+          text: 'Главная',
+        }
+      ]
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/list/page/:num',
+    name: 'PhonesList',
+    component: () => import(/* webpackChunkName: "list" */ '../views/PhonesList.vue'),
+    meta: {
+      breadCrumbs: [
+        {
+          href: '/',
+          text: 'Главная',
+        },
+        {
+          href: '/list/page/',
+          text: 'Стоп-лист',
+        },
+      ]
+    }
+  },
+  {
+    path: '/edit/:id',
+    name: 'EditPage',
+    component: () => import(/* webpackChunkName: "editPage" */ '../views/EditPage.vue'),
+    meta: {
+      breadCrumbs: [
+        {
+          href: '/',
+          text: 'Главная',
+        },
+        {
+          href: '/edit/',
+          text: 'Редактирование записи',
+        },
+      ]
+    }
   },
 ];
 
